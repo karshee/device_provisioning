@@ -1,1 +1,1 @@
-iot_thing_name = dev
+iot_thing_name = "dev"
