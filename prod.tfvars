@@ -1,1 +1,1 @@
-iot_thing_name = prod
+iot_thing_name = hello-prod
