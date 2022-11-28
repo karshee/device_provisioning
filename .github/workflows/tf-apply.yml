@@ -1,6 +1,6 @@
 
 
-name: 'Terraform'
+name: 'Terraform - plan and apply'
 
 on:
   workflow_dispatch:
@@ -10,10 +10,10 @@ on:
         description: 'Environment'
         required: true
         options:
-          - baklava
-          - mainnet-primary
-          - mainnet-secondary
-        default: 'baklava'
+          - dev
+          - prod
+          - stage
+        default: 'dev'
 permissions:
   contents: read
 
@@ -51,7 +51,7 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: terraform plan -var-file=dev.tfvars
+        run: terraform plan -var-file='${{ github.event.inputs.environment }}'
 
       - name: Terraform apply
         env:
