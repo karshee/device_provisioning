@@ -3,11 +3,17 @@
 name: 'Terraform'
 
 on:
-  push:
-    #Specify which branch
-    branches: [ "main" ]
-  pull_request:
-
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: 'Environment'
+        required: true
+        options:
+          - baklava
+          - mainnet-primary
+          - mainnet-secondary
+        default: 'baklava'
 permissions:
   contents: read
 
