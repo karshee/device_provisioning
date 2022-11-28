@@ -4,7 +4,6 @@ name: 'Terraform'
 
 on:
   push:
-    #Specify which branch
     branches: [ "main" ]
   pull_request:
 
@@ -14,7 +13,6 @@ permissions:
 jobs:
   terraform:
     name: 'Terraform'
-    environment: production
     runs-on: ubuntu-latest
     defaults:
       run:
