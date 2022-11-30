@@ -1,1 +1,1 @@
-iot_thing_name = stage
+iot_thing_name = "stage"
