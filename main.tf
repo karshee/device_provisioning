@@ -88,6 +88,7 @@ resource "aws_iot_policy" "pubsub" {
     ]
   })
 }
+/*
 #creating IOT Cert
 resource "aws_iot_certificate" "cert" {
   active = true
@@ -114,3 +115,4 @@ resource "aws_kinesis_video_stream" "default" {
     Name = aws_iot_thing.drone.name
   }
 }
+*/
