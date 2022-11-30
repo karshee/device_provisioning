@@ -5,6 +5,7 @@ name: 'Terraform - plan and apply'
 on:
   push:
     branches: [ "test" ]
+  workflow_dispatch:
     inputs:
       environment:
         type: choice
