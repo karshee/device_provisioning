@@ -1,6 +1,6 @@
 
 
-name: 'Terraform - plan and apply'
+name: 'Terraform - apply'
 
 on:
   push:
