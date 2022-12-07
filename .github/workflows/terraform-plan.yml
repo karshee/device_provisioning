@@ -7,6 +7,12 @@ on:
     branches:
       - main
       - 'feature/**'
+    inputs:
+      environment:
+        type: choice
+        description: 'Environment'
+        required: false
+        default: 'dev'
   push:
     branches:
       - main
@@ -16,10 +22,6 @@ on:
         type: choice
         description: 'Environment'
         required: false
-        options:
-          - dev
-          - stage
-          - prod
         default: 'dev'
   workflow_dispatch:
     inputs:
