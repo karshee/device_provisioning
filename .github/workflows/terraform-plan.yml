@@ -3,24 +3,6 @@
 name: 'Terraform - plan'
 
 on:
-  pull_request:
-    branches:
-      - main
-      - 'feature/**'
-    inputs:
-      environment:
-        description: 'Environment'
-        required: true
-        default: 'dev'
-  push:
-    branches:
-      - main
-      - 'feature/**'
-    inputs:
-      environment:
-        description: 'Environment'
-        required: true
-        default: 'dev'
   workflow_dispatch:
     inputs:
       environment:
@@ -32,6 +14,7 @@ on:
           - stage
           - prod
         default: 'dev'
+
 permissions:
   contents: read
 
