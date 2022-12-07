@@ -15,7 +15,7 @@ on:
       environment:
         type: choice
         description: 'Environment'
-        required: true
+        required: false
         options:
           - dev
           - stage
