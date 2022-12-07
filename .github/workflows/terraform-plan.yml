@@ -3,8 +3,23 @@
 name: 'Terraform - plan'
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
-    branches: [ "test" ]
+    branches:
+      - main
+      - 'feature/**'
+    inputs:
+      environment:
+        type: choice
+        description: 'Environment'
+        required: true
+        options:
+          - dev
+          - stage
+          - prod
+        default: 'dev'
   workflow_dispatch:
     inputs:
       environment:
@@ -42,20 +57,20 @@ jobs:
           AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-        run: terraform init
+        run: terraform init #-backend-config=env_conf/${{ github.event.inputs.environment }}.conf
 
       # Checks that all Terraform configuration files adhere to a canonical format
       - name: Terraform Format
         run: terraform fmt -check
-
-#      #switches to correct workspace
-#      - name: Terraform Workspace
-#        id: workspace
-#        run: terraform workspace select ${{ github.event.inputs.environment }}
+      
+      #      #switches to correct workspace
+      #      - name: Terraform Workspace
+      #        id: workspace
+      #        run: terraform workspace select ${{ github.event.inputs.environment }}
 
       # Generates an execution plan for Terraform
       - name: Terraform Plan
         env:
           AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: terraform plan -var-file=${{ github.event.inputs.environment }}.tfvars
+        run: terraform plan -var-file=stages/${{ github.event.inputs.environment }}.tfvars
