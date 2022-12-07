@@ -9,9 +9,8 @@ on:
       - 'feature/**'
     inputs:
       environment:
-        type: choice
         description: 'Environment'
-        required: false
+        required: true
         default: 'dev'
   push:
     branches:
@@ -19,9 +18,8 @@ on:
       - 'feature/**'
     inputs:
       environment:
-        type: choice
         description: 'Environment'
-        required: false
+        required: true
         default: 'dev'
   workflow_dispatch:
     inputs:
